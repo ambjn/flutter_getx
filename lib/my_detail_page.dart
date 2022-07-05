@@ -44,7 +44,8 @@ class _DetailPageState extends State<DetailPage> {
                     children: [
                       const CircleAvatar(
                         radius: 40,
-                        backgroundImage: AssetImage("img/background.jpg"),
+                        backgroundImage:
+                            AssetImage("assets/img/background.jpg"),
                       ),
                       const SizedBox(
                         width: 10,
@@ -279,7 +280,7 @@ class _DetailPageState extends State<DetailPage> {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25),
                         image: const DecorationImage(
-                            image: AssetImage("img/background.jpg"),
+                            image: AssetImage("assets/img/background.jpg"),
                             fit: BoxFit.cover)),
                   ),
                 )
