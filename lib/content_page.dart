@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter_getx/recent_contest.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
@@ -259,7 +260,15 @@ class _ContentPageState extends State<ContentPage> {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Color(0xFFfdc33c)),
-                    child: GestureDetector(),
+                    child: GestureDetector(
+                      onTap: () {
+                        Get.to(() => RecentContest());
+                      },
+                      child: const Icon(
+                        Icons.arrow_forward_ios,
+                        color: Colors.white,
+                      ),
+                    ),
                   )
                 ],
               ),

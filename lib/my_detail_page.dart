@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_getx/content_page.dart';
 import 'package:get/get.dart';
 
 class DetailPage extends StatefulWidget {
@@ -41,7 +42,7 @@ class _DetailPageState extends State<DetailPage> {
                 top: 50,
                 left: 10,
                 child: IconButton(
-                  onPressed: () => Get.back(),
+                  onPressed: () => Get.to(() => const ContentPage()),
                   icon: const Icon(Icons.arrow_back_ios),
                 )),
             Positioned(
