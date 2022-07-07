@@ -1,6 +1,7 @@
 import 'dart:convert';
-
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:get/instance_manager.dart';
 
 class ContentPage extends StatefulWidget {
   const ContentPage({Key? key}) : super(key: key);
@@ -156,6 +157,9 @@ class _ContentPageState extends State<ContentPage> {
                   itemCount: info.length,
                   itemBuilder: (_, i) {
                     return GestureDetector(
+                      onTap: (() {
+                        Get.toNamed("/detail/");
+                      }),
                       child: Container(
                         padding: const EdgeInsets.only(left: 20, top: 20),
                         height: 220,
