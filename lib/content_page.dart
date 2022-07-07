@@ -112,7 +112,7 @@ class _ContentPageState extends State<ContentPage> {
                     height: 50,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Color(0xFFfdc33c)),
+                        color: const Color(0xFFfdc33c)),
                     child: GestureDetector(),
                   )
                 ],
@@ -154,7 +154,7 @@ class _ContentPageState extends State<ContentPage> {
                                 Expanded(child: Container())
                               ],
                             )),
-                            SizedBox(height: 10),
+                            const SizedBox(height: 10),
                             Container(
                               width: width,
                               child: const Text(
@@ -290,7 +290,6 @@ class _ContentPageState extends State<ContentPage> {
                                   ),
                                   Expanded(child: Container()),
                                   Container(
-                                    width: 70,
                                     height: 70,
                                     child: const Text(
                                       "Time",
