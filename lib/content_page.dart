@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 
 class ContentPage extends StatefulWidget {
@@ -8,6 +10,31 @@ class ContentPage extends StatefulWidget {
 }
 
 class _ContentPageState extends State<ContentPage> {
+  List list = [];
+  List info = [];
+  _readData() async {
+    await DefaultAssetBundle.of(context)
+        .loadString("json/recent.json")
+        .then((s) {
+      setState(() {
+        list = json.decode(s);
+      });
+    });
+    await DefaultAssetBundle.of(context)
+        .loadString("json/detail.json")
+        .then((s) {
+      setState(() {
+        info = json.decode(s);
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    _readData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -126,7 +153,7 @@ class _ContentPageState extends State<ContentPage> {
               height: 220,
               child: PageView.builder(
                   controller: PageController(viewportFraction: 0.88),
-                  itemCount: 4,
+                  itemCount: info.length,
                   itemBuilder: (_, i) {
                     return GestureDetector(
                       child: Container(
@@ -144,9 +171,9 @@ class _ContentPageState extends State<ContentPage> {
                             Container(
                                 child: Row(
                               children: [
-                                const Text(
-                                  "Title",
-                                  style: TextStyle(
+                                Text(
+                                  info[i]['title'],
+                                  style: const TextStyle(
                                       fontSize: 30,
                                       fontWeight: FontWeight.w500,
                                       color: Colors.white),
@@ -157,9 +184,9 @@ class _ContentPageState extends State<ContentPage> {
                             const SizedBox(height: 10),
                             Container(
                               width: width,
-                              child: const Text(
-                                "Text",
-                                style: TextStyle(
+                              child: Text(
+                                info[i]['text'],
+                                style: const TextStyle(
                                     fontSize: 20, color: Color(0xFFb8eefc)),
                               ),
                             ),
@@ -177,9 +204,8 @@ class _ContentPageState extends State<ContentPage> {
                                   child: Container(
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(25),
-                                        image: const DecorationImage(
-                                            image: AssetImage(
-                                                "assets/img/background.jpg"),
+                                        image: DecorationImage(
+                                            image: AssetImage(info[i]['img']),
                                             fit: BoxFit.cover)),
                                   ),
                                 )
