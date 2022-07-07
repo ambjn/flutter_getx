@@ -39,13 +39,15 @@ class _RecentContestState extends State<RecentContest> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+          elevation: 0,
+          backgroundColor: const Color(0xFF69c5df),
           leading: IconButton(
-        onPressed: () => Get.back(),
-        icon: const Icon(Icons.arrow_back_ios),
-      )),
+            onPressed: () => Get.back(),
+            icon: const Icon(Icons.arrow_back_ios),
+          )),
       backgroundColor: const Color(0xFFcbe6f6),
       body: Container(
-        margin: const EdgeInsets.only(left: 20, top: 100, right: 10),
+        margin: const EdgeInsets.only(left: 20, top: 10, right: 10),
         child: Column(
           children: [
             Expanded(

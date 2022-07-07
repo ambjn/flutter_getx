@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_getx/content_page.dart';
+import 'package:flutter_getx/detail_controller.dart';
 import 'package:get/get.dart';
 
 class DetailPage extends StatefulWidget {
@@ -33,6 +34,7 @@ class _DetailPageState extends State<DetailPage> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     int _currentIndex = 0;
+    final DetailController fav = Get.put(DetailController());
     return Scaffold(
       body: Container(
         color: const Color(0xFFc5e5f3),
@@ -43,7 +45,10 @@ class _DetailPageState extends State<DetailPage> {
                 left: 10,
                 child: IconButton(
                   onPressed: () => Get.to(() => const ContentPage()),
-                  icon: const Icon(Icons.arrow_back_ios),
+                  icon: const Icon(
+                    Icons.home_outlined,
+                    color: Colors.white,
+                  ),
                 )),
             Positioned(
               top: 120,
@@ -316,8 +321,11 @@ class _DetailPageState extends State<DetailPage> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
                             color: const Color(0xFFfbc33e)),
-                        child: const Icon(Icons.favorite_border,
-                            color: Colors.white)),
+                        child: IconButton(
+                          icon: Icon(Icons.favorite_border),
+                          color: Colors.white,
+                          onPressed: () {},
+                        )),
                     const SizedBox(
                       width: 10,
                     ),

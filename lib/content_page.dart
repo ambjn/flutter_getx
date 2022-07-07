@@ -336,9 +336,9 @@ class _ContentPageState extends State<ContentPage> {
                                   Expanded(child: Container()),
                                   Container(
                                     height: 70,
-                                    child: const Text(
-                                      "Time",
-                                      style: TextStyle(
+                                    child: Text(
+                                      info[i]['time'],
+                                      style: const TextStyle(
                                           fontSize: 10,
                                           decoration: TextDecoration.none,
                                           color: Color(0xFFb2b8bb)),
