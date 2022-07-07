@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,6 +11,22 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
+  List images = [];
+  List info = [];
+  _readData() async {
+    await DefaultAssetBundle.of(context).loadString("json/img.json").then((s) {
+      setState(() {
+        images = json.decode(s);
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    _readData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -43,10 +61,9 @@ class _DetailPageState extends State<DetailPage> {
                   padding: const EdgeInsets.only(left: 20, right: 20),
                   child: Row(
                     children: [
-                      const CircleAvatar(
+                      CircleAvatar(
                         radius: 40,
-                        backgroundImage:
-                            AssetImage("assets/img/background.jpg"),
+                        backgroundImage: AssetImage(Get.arguments['img']),
                       ),
                       const SizedBox(
                         width: 10,
@@ -54,18 +71,18 @@ class _DetailPageState extends State<DetailPage> {
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
+                        children: [
                           Text(
-                            "name",
-                            style: TextStyle(
+                            Get.arguments['name'],
+                            style: const TextStyle(
                                 color: Color(0xFF3b3f42),
                                 fontSize: 18,
                                 decoration: TextDecoration.none),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 5,
                           ),
-                          Text(
+                          const Text(
                             "Top Level",
                             style: TextStyle(
                                 color: Color(0xFFfdebb2),
@@ -143,10 +160,10 @@ class _DetailPageState extends State<DetailPage> {
                       const SizedBox(height: 20),
                       Container(
                         width: width,
-                        child: const Text(
-                          "Text",
-                          style:
-                              TextStyle(fontSize: 20, color: Color(0xFFb8b8b8)),
+                        child: Text(
+                          Get.arguments['text'],
+                          style: const TextStyle(
+                              fontSize: 20, color: Color(0xFFb8b8b8)),
                         ),
                       ),
                       const SizedBox(
@@ -172,15 +189,15 @@ class _DetailPageState extends State<DetailPage> {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                children: const [
+                                children: [
                                   Text(
-                                    "name",
-                                    style: TextStyle(
+                                    Get.arguments['name'],
+                                    style: const TextStyle(
                                         fontSize: 18,
                                         color: Color(0xFF303030),
                                         fontWeight: FontWeight.w700),
                                   ),
-                                  Text(
+                                  const Text(
                                     "Deadline",
                                     style: TextStyle(
                                         fontSize: 18, color: Color(0xFFacacac)),
@@ -200,15 +217,15 @@ class _DetailPageState extends State<DetailPage> {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                children: const [
+                                children: [
                                   Text(
-                                    "499",
-                                    style: TextStyle(
+                                    Get.arguments['prize'],
+                                    style: const TextStyle(
                                         fontSize: 18,
                                         color: Color(0xFF303030),
                                         fontWeight: FontWeight.w700),
                                   ),
-                                  Text(
+                                  const Text(
                                     "Prize",
                                     style: TextStyle(
                                         fontSize: 18, color: Color(0xFFacacac)),
@@ -271,7 +288,7 @@ class _DetailPageState extends State<DetailPage> {
                 )),
             //images
             Stack(children: [
-              for (int i = 0; i < 5; i++)
+              for (int i = 0; i < images.length; i++)
                 Positioned(
                   top: 590,
                   left: (20 + i * 35).toDouble(),
@@ -280,8 +297,8 @@ class _DetailPageState extends State<DetailPage> {
                   child: Container(
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25),
-                        image: const DecorationImage(
-                            image: AssetImage("assets/img/background.jpg"),
+                        image: DecorationImage(
+                            image: AssetImage(images[i]["img"]),
                             fit: BoxFit.cover)),
                   ),
                 )

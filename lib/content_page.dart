@@ -163,7 +163,8 @@ class _ContentPageState extends State<ContentPage> {
                           'text': info[i]['text'].toString(),
                           'name': info[i]['name'].toString(),
                           'img': info[i]['img'].toString(),
-                          'time': info[i]['time'].toString()
+                          'time': info[i]['time'].toString(),
+                          'prize': info[i]['prize'].toString()
                         });
                       }),
                       child: Container(
