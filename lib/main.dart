@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getx/my_detail_page.dart';
 import 'package:flutter_getx/my_home_page.dart';
 import 'package:get/route_manager.dart';
 import 'package:get/get.dart';
@@ -17,7 +18,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       initialRoute: "/",
-      getPages: [GetPage(name: "/", page: () => const MyHomePage())],
+      getPages: [
+        GetPage(name: "/", page: () => const MyHomePage()),
+        GetPage(name: "/detail", page: () => const DetailPage())
+      ],
     );
   }
 }
