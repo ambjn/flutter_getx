@@ -274,7 +274,7 @@ class _ContentPageState extends State<ContentPage> {
                     child: ListView.builder(
                         shrinkWrap: true,
                         scrollDirection: Axis.vertical,
-                        itemCount: 4,
+                        itemCount: list.length,
                         itemBuilder: (_, i) {
                           return Container(
                             width: width,
@@ -290,10 +290,9 @@ class _ContentPageState extends State<ContentPage> {
                                   const EdgeInsets.only(left: 20, right: 20),
                               child: Row(
                                 children: [
-                                  const CircleAvatar(
+                                  CircleAvatar(
                                     radius: 40,
-                                    backgroundImage:
-                                        AssetImage("assets/img/background.jpg"),
+                                    backgroundImage: AssetImage(list[i]["img"]),
                                   ),
                                   const SizedBox(
                                     width: 10,
@@ -302,22 +301,22 @@ class _ContentPageState extends State<ContentPage> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
-                                    children: const [
+                                    children: [
                                       Text(
-                                        "Status",
-                                        style: TextStyle(
-                                            color: Color(0xFFfdebb2),
-                                            fontSize: 12,
+                                        list[i]["status"],
+                                        style: const TextStyle(
+                                            color: Colors.orange,
+                                            fontSize: 18,
                                             decoration: TextDecoration.none),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 5,
                                       ),
                                       SizedBox(
                                         width: 170,
                                         child: Text(
-                                          "Text",
-                                          style: TextStyle(
+                                          list[i]["text"],
+                                          style: const TextStyle(
                                               color: Color(0xFF3b3f42),
                                               fontSize: 18,
                                               decoration: TextDecoration.none),
