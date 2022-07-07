@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_getx/content_page.dart';
-import 'package:flutter_getx/my_detail_page.dart';
 import 'package:flutter_getx/my_home_page.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get/route_manager.dart';
+import 'package:get/get.dart';
 
 void main() => runApp(const MyApp());
 
