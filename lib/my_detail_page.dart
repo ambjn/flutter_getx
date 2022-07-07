@@ -324,7 +324,7 @@ class _DetailPageState extends State<DetailPage> {
                         child: IconButton(
                           icon: Icon(Icons.favorite_border),
                           color: Colors.white,
-                          onPressed: () {},
+                          onPressed: () => fav.favCounter(),
                         )),
                     const SizedBox(
                       width: 10,
