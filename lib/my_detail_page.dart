@@ -132,9 +132,9 @@ class _DetailPageState extends State<DetailPage> {
                       Container(
                           child: Row(
                         children: [
-                          const Text(
-                            "Title",
-                            style: TextStyle(
+                          Text(
+                            Get.arguments['title'],
+                            style: const TextStyle(
                                 fontSize: 30, fontWeight: FontWeight.w500),
                           ),
                           Expanded(child: Container())
